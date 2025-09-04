@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>Menu</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #fff8f0;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background-color: Red;
+  color: orange;
+  padding: 1rem 2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h1 {
+  font-size: 1.8rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero {
+  background: url('https://source.unsplash.com/1600x900/?restaurant,food') no-repeat center center/cover;
+  color:#796D5D ;
+  text-align: center;
+  padding: 6rem 2rem;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero .btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #ff6347;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.menu {
+  padding: 4rem 2rem;
+  background-color: #fff;
+}
+
+.menu h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.menu-items {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.item {
+  background-color: #ffe4c4;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 250px;
+  text-align: center;
+}
+
+.contact {
+  padding: 3rem 2rem;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+footer {
+  background-color: #8b0000;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+</style>
+  <header>
+    <nav>
+      <h1>Highway Dhaba</h1>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <h2>We knead you to try our bread.</h2>
+    <p>Discover the taste of tradition with a modern twist.</p>
+    <a href="#menu" class="btn">Explore Menu</a>
+  </section>
+
+  <section id="menu" class="menu">
+    <h2>Signature Dishes</h2>
+    <div class="menu-items">
+      <div class="item">
+        <h3>Paneer Tikka Masala</h3>
+        <p>Good For Elders</p>
+      </div>
+      <div class="item">
+        <h3>Munchow Soup</h3>
+        <p>No Description Needed</p>
+      </div>
+      <div class="item">
+        <h3>Masala Dosa</h3>
+        <p>South Indian classic with spicy potato filling.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Visit Us</h2>
+    <p>Swargate</p>
+    <p>Call: 4098712342</p>
+    <p>dhabahighway@gmail.com</p>
+  </section>
+
+  <footer>
+    <p></p>
+  </footer>
