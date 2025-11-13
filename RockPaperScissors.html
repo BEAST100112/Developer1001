@@ -32,8 +32,28 @@
       <div class="button3">
         <button onclick="playGame('scissors')">✂Scissors</button>
       </div>
+      <p id="result">
       <script>
-        
+        function playGame(userChoice){
+          const choices=["rock","paper","scissors"];
+          const computerChoices=
+            choices[Math.floor(Math.random()*choices.lenght)];
+
+          let result;
+          if (userChoice===computerChoice){
+            result="It's A Draw!!";
+          }else if{
+
+          if (userChoice==="rock" && computerChoice==="scissors")||
+              if (userChoice==="paper" && computerChoice==="rock")||
+                  if (userChoice==="scissors" && computerChoice==="paper"){
+                    result="You Win!!!"
+                  }else if{
+            result="You Lose!!!"
+
+          }
+            document.getElementById("result").innerText=
+              `You 
       </script>
   </head>
 </html>
