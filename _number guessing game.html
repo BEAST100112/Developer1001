@@ -1,0 +1,99 @@
+﻿<html>
+<head>
+<title>Number Guessing Game</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+padding: 20px;
+max-width: 350px;
+margin: auto;
+background-color: 266BB5;
+}
+.box{
+       width: 300px;
+  border: 15px solid blue;
+  padding: 50px;
+  margin: 20px;
+border-radius:25px;
+background-color:cyan;
+}
+h2 {
+text-align: center;
+margin-bottom: 20px;
+}
+label {
+font-size: 16px;
+display: block;
+margin-bottom: 8px;
+}
+input[type=number] {
+width: 100%;
+padding: 8px;
+font-size: 16px;
+margin-bottom: 12px;
+}
+button {
+width: 100%;
+padding: 10px;
+font-size: 16px;
+cursor: pointer;
+}
+#message {
+margin-top: 20px;
+font-size: 18px;
+text-align: center;
+min-height: 24px;
+width: 100%;
+padding: 10px;
+font-size: 16px;
+}
+
+
+</style>
+</head>
+<body>
+<div class="box">
+
+<h1>Number Guessing Game</h1>
+<div id="game-area">
+ <p>I've chosen a number between 1 and 100.  Try to guess it!</p>
+ <input type="number" id="guess-input">
+ <button onclick="checkGuess()">Submit Guess</button>
+ <p id="message"></p>
+
+ <p id="attempts">Attempts: 0</p>
+
+</div>
+
+<button onclick="resetGame()" style="margin-top:15px">Play Again</button>
+</div>
+<script>
+let secretNumber = Math.floor(Math.random() * 100) + 1;
+let attempts = 0;
+
+function checkGuess() {
+ let userGuess = document.getElementById("guess-input").value;
+ let message = document.getElementById("message");
+ let attemptsDisplay = document.getElementById("attempts");
+
+ attempts++;
+ attemptsDisplay.textContent = "Attempts: " + attempts;
+
+ if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+   message.textContent = "Please enter a valid number between 1 and 100.";
+ } else if (parseInt(userGuess) === secretNumber) {
+   message.textContent = "Congratulations! You guessed the number in " + attempts + " attempts.";
+   document.getElementById("guess-input").disabled = true; // Disable input after winning
+   document.querySelector("button").disabled = true; // Disable the button
+ } else if (parseInt(userGuess) < secretNumber) {
+   message.textContent = "Too low! Try again.";
+ } else {
+   message.textContent = "Too high! Try again.";
+ }
+
+ document.getElementById("guess-input").value = ""; // Clear the input field
+}
+</script>
+
+</body>
+</html>
