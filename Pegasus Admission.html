@@ -80,6 +80,36 @@
 
       <button type="submit">Submit Application</button>
     </form>
+  
   </div>
+   <script>
+    const form = document.getElementById('admissionForm');
+    const memberList = document.getElementById('memberList');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const age = document.getElementById('age').value;
+      const sport = document.getElementById('sport').value;
+      const contact = document.getElementById('contact').value;
+
+      const memberCard = document.createElement('div');
+      memberCard.classList.add('member-card');
+      memberCard.innerHTML = `
+        <strong>Name:</strong> ${name}<br>
+        <strong>Age:</strong> ${age}<br>
+        <strong>Sport:</strong> ${sport}<br>
+        <strong>Contact:</strong> ${contact}
+      `;
+
+      memberList.appendChild(memberCard);
+
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
 </body>
 </html>
