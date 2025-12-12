@@ -2,25 +2,82 @@
 <head>
 <title>Traffic lights</title>
 <style>
-  body{
-    background-color:red;
-    font-family:Comic Sans;
-  }
-.emoji-container{
-  background-color:gray;
-  height:300px;
-  widht:100px;
-  Border-radius:50px;
-  margin:auto;
+  traffic-light {
+    height: 300px;
+    width: 100px;
+    background-color: #333; /* Dark casing */
+    border-radius: 20px;
+    margin: 30px 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bulb {
+    height: 80px;
+    width: 80px;
+    background-color: #111; /* Off color, very dark */
+    border-radius: 50%;
+    transition: background-color 0.5s; /* Smooth color change */
+}
+
+/* Classes JavaScript will add/remove */
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: green;
 }
   </style>
 </head>
     <body>
-       <div class="emoji-container">
-            <h1>⚫</h1>
-            <h1>⚫</h1>
-            <h1>⚫</h1>
-       </div>
+      <div class="traffic-light">
+        <div id="stopLight" class="bulb"></div>
+        <div id="slowLight" class="bulb"></div>
+        <div id="goLight" class="bulb"></div>
+    </div>
+    
+    <button onclick="changeColor()">Change Light</button>
+       <script>const redLight = document.getElementById('stopLight');
+const yellowLight = document.getElementById('slowLight');
+const greenLight = document.getElementById('goLight');
+       let currentState = 'red';
+
+function clearLights() {
+    redLight.classList.remove('red');
+    yellowLight.classList.remove('yellow');
+    greenLight.classList.remove('green');
+}
+
+function changeColor() {
+    clearLights();
+    
+    switch (currentState) {
+        case 'red':
+            redLight.classList.add('red');
+            currentState = 'yellow';
+            break;
+        case 'yellow':
+            yellowLight.classList.add('yellow');
+            currentState = 'green';
+            break;
+        case 'green':
+            greenLight.classList.add('green');
+            currentState = 'red';
+            break;
+    }
+}
+
+// Initialize the first light on page load
+changeColor();
+       </script>
     </body>
 </html>
   
