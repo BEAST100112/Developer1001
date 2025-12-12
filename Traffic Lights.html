@@ -2,7 +2,7 @@
 <head>
 <title>Traffic lights</title>
 <style>
-  traffic-light {
+  .traffic-light {
     height: 300px;
     width: 100px;
     background-color: #333; /* Dark casing */
@@ -15,7 +15,7 @@
     align-items: center;
 }
 
-.bulb {
+.bulb:hover {
     height: 80px;
     width: 80px;
     background-color: #111; /* Off color, very dark */
@@ -44,8 +44,9 @@
         <div id="goLight" class="bulb"></div>
     </div>
     
-    <button onclick="changeColor()">Change Light</button>
-       <script>const redLight = document.getElementById('stopLight');
+    
+       <script>
+         const redLight = document.getElementById('stopLight');
 const yellowLight = document.getElementById('slowLight');
 const greenLight = document.getElementById('goLight');
        let currentState = 'red';
