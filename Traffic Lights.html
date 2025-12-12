@@ -2,82 +2,105 @@
 <head>
 <title>Traffic lights</title>
 <style>
-  .traffic-light {
-    height: 300px;
-    width: 100px;
-    background-color: #D3D3D3; /* Dark casing */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.traffic-light {
+    background-color: #333;
     border-radius: 20px;
-    margin: 30px 0;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    gap: 20px;
+    border: 5px solid #222;
 }
 
-.bulb:hover {
-    height: 80px;
-    width: 80px;
-    background-color: #111; /* Off color, very dark */
+.light {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    transition: background-color 0.5s; /* Smooth color change */
+    background-color: #444; /* Off state color */
+    opacity: 0.3; /* Dim the light when off */
+    transition: opacity 0.3s;
 }
 
-/* Classes JavaScript will add/remove */
-.red {
+/* Classes to turn lights on */
+.red-on {
+    opacity: 1;
     background-color: red;
+    box-shadow: 0 0 20px 5px red;
 }
 
-.yellow {
+.yellow-on {
+    opacity: 1;
     background-color: yellow;
+    box-shadow: 0 0 20px 5px yellow;
 }
 
-.green {
+.green-on {
+    opacity: 1;
     background-color: green;
+    box-shadow: 0 0 20px 5px green;
 }
   </style>
 </head>
     <body>
       <div class="traffic-light">
-        <div id="stopLight" class="bulb"></div>
-        <div id="slowLight" class="bulb"></div>
-        <div id="goLight" class="bulb"></div>
+        <div id="red" class="light"></div>
+        <div id="yellow" class="light"></div>
+        <div id="green" class="light"></div>
     </div>
     
     
        <script>
-         const redLight = document.getElementById('stopLight');
-const yellowLight = document.getElementById('slowLight');
-const greenLight = document.getElementById('goLight');
-       let currentState = 'red';
+        const redLight = document.getElementById('red');
+const yellowLight = document.getElementById('yellow');
+const greenLight = document.getElementById('green');
 
-function clearLights() {
-    redLight.classList.remove('red');
-    yellowLight.classList.remove('yellow');
-    greenLight.classList.remove('green');
+// Durations for each light in milliseconds
+const redDuration = 5000; // Red for 5 seconds
+const greenDuration = 4000; // Green for 4 seconds
+const yellowDuration = 1000; // Yellow for 1 second
+
+function turnOffLights() {
+    redLight.className = 'light';
+    yellowLight.className = 'light';
+    greenLight.className = 'light';
 }
 
-function changeColor() {
-    clearLights();
-    
-    switch (currentState) {
-        case 'red':
-            redLight.classList.add('red');
-            currentState = 'yellow';
-            break;
-        case 'yellow':
-            yellowLight.classList.add('yellow');
-            currentState = 'green';
-            break;
-        case 'green':
-            greenLight.classList.add('green');
-            currentState = 'red';
-            break;
-    }
+function startTrafficLight() {
+    // Start with green
+    greenOn();
 }
 
-// Initialize the first light on page load
-changeColor();
+function greenOn() {
+    turnOffLights();
+    greenLight.classList.add('green-on');
+    // After green duration, turn on yellow
+    setTimeout(yellowOn, greenDuration);
+}
+
+function yellowOn() {
+    turnOffLights();
+    yellowLight.classList.add('yellow-on');
+    // After yellow duration, turn on red
+    setTimeout(redOn, yellowDuration);
+}
+
+function redOn() {
+    turnOffLights();
+    redLight.classList.add('red-on');
+    // After red duration, go back to green (loop the sequence)
+    setTimeout(greenOn, redDuration);
+}
+
+// Start the simulation when the script loads
+startTrafficLight();
        </script>
     </body>
 </html>
