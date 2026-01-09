@@ -3,40 +3,44 @@
     <title>Bulb On/Off</title>
     <style>
       body{
-        background-color:white;
+        background-color:#3944BC;
         font-family:sans-serif;
       }
       .button1{
          background-color:#009900;
         border-radius:25px;
-        height:67px;
-        width:60px;
+         padding: 10px 20px;
         border:5px solid;
       }
       .button2{
          background-color:#CF1020;
         border-radius:25px;
-        height:67px;
-        width:60px;
+         padding: 10px 20px;
         border:5px solid;
       }
-      .bulbOff{
-        height:600px;
-        width:450px;
-        class:center
-      }
+     
       
     </style>
     <body>
-      <div class="bulbOff">
-        <img src="https://tse2.mm.bing.net/th/id/OIP.1ThiyCIoHtt4TSZRrS_pSQHaF7?pid=Api&P=0&h=180">
-          </div>
+  <h2>Light ON/OFF Bulb</h2>
+  <img id="Bulb" src="https://www.w3schools.com/js/pic_bulboff.gif">
+
+  <br>
       <div class="button1">
-        <button onclick="bulbOn()">On</button>
+  <button onclick="turnon()">On</button>
       </div>
       <div class="button2">
-        <button onclick="bulbOff()">Off</button>
+  <button onclick="turnoff()">Off</button>
       </div>
-    </body>
+  <script>
+    function turnon() {
+      document.getElementById("Bulb").src="https://www.w3schools.com/js/pic_bulbon.gif";
+    }
+    function turnoff() {
+      document.getElementById("Bulb").src="https://www.w3schools.com/js/pic_bulboff.gif";
+    }
+  </script>
+</body>
+</html>
   </head>
 </html>
