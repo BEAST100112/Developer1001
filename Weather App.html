@@ -1,0 +1,254 @@
+<html>
+  <head>
+    <title>Weather</title>
+    <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --accent: #22c55e;
+      --accent-2: #3b82f6;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --danger: #ef4444;
+      --border: #1f2937;
+    }
+
+  
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(1200px 600px at 10% 10%, #111827 0%, var(--bg) 48%, #090e21 100%);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Segoe UI Symbol", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 560px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)) padding-box,
+                  linear-gradient(180deg, rgba(59,130,246,0.5), rgba(34,197,94,0.5)) border-box;
+      border: 1px solid transparent;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    h1 {
+      margin: 0 0 14px 0;
+      font-size: 1.6rem;
+      letter-spacing: 0.3px;
+    }
+    .sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr 1fr;
+    }
+    .grid .span-2 { grid-column: span 2; }
+
+    label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #cfd4dc;
+    }
+
+    input[type="text"], select {
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #0b1227;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    input::placeholder { color: #74829a; }
+    input:focus, select:focus {
+      border-color: var(--accent-2);
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+    }
+
+    .vehicle-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #0c1329;
+    }
+    .fare {
+      color: #a5b4fc;
+      font-weight: 600;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 12px;
+    }
+
+    button {
+      all: unset;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--accent-2), var(--accent));
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(34,197,94,0.35);
+      transition: transform 0.06s ease, filter 0.2s ease;
+    }
+    button:active { transform: translateY(1px) scale(0.995); }
+    .secondary {
+      background: #0b1227;
+      border: 1px solid var(--border);
+      color: var(--text);
+      box-shadow: none;
+    }
+
+    .note, .error {
+      margin-top: 8px;
+      font-size: 0.92rem;
+    }
+    .note { color: var(--muted); }
+    .error { color: var(--danger); }
+
+    .summary {
+      margin-top: 16px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: #0c1329;
+      border: 1px solid var(--border);
+      display: none;
+    }
+    .summary strong { color: #c7d2fe; }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: #062a12;
+      color: #d1fae5;
+      border: 1px solid #115e38;
+      padding: 12px 14px;
+      border-radius: 10px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+      display: none;
+    }
+
+    .footer {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    @media (max-width: 560px) {
+      .grid { grid-template-columns: 1fr; }
+      .footer { text-align: left; }
+    }
+      .content {
+      padding: 20px;
+      display: grid;
+      gap: 14px;
+    }
+.field {
+      display: grid;
+      gap: 8px;
+    }
+
+  </style>
+  </head>
+  <body>
+     <main class="app" aria-label="Cab booking form">
+    <h1>Check Weather Here</h1>
+    <p class="sub">Enter your location.</p>
+
+    <div class="grid">
+      <div class="span-2">
+        <label for="pickup">Location.</label>
+        <input id="pickup" type="text" placeholder="e.g., Pune" autocomplete="off" />
+      </div>
+      <body>
+  <div class="app" role="application" aria-label="Weather App">
+    <div class="header">
+      <div class="cloud" aria-hidden="true">☁️</div>
+      <div class="title">Weather App</div>
+    </div>
+
+    <div class="content">
+      <div class="field">
+        <label class="label" for="city">Enter city</label>
+        <div class="input-row">
+          <input id="city" type="text" placeholder="e.g., Pune" value="Pune" aria-label="City name"/>
+          <button id="checkBtn" type="button">Check Weather</button>
+        </div>
+      </div>
+
+      <div id="result" class="result" aria-live="polite">
+        Weather in <span class="city">Pune</span>: 🌤 Sunny, 30°C
+      </div>
+
+      
+    </div>
+  </div>
+    <script>
+    const input = document.getElementById('city');
+    const btn = document.getElementById('checkBtn');
+    const result = document.getElementById('result');
+
+    const samples = {
+      pune: { emoji: '🌤', text: 'Sunny, 30°C' },
+      mumbai: { emoji: '🌧', text: 'Rainy, 28°C' }
+    };
+
+    function formatCity(name) {
+      return name
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, ' ')
+        .replace(/^\w/, c => c.toUpperCase());
+    }
+
+    function getWeather(cityRaw) {
+      const key = cityRaw.trim().toLowerCase();
+      if (samples[key]) {
+        const city = formatCity(cityRaw);
+        const { emoji, text } = samples[key];
+        return `Weather in <span class="city">${city}</span>: ${emoji} ${text}`;
+      }
+      const city = formatCity(cityRaw || 'your city');
+      return `Weather in <span class="city">${city}</span>: ⛅️ Partly cloudy, 27°C`;
+    }
+
+    function update() {
+      const city = input.value;
+      result.innerHTML = getWeather(city);
+    }
+
+    btn.addEventListener('click', update);
+
+    // Optional: update on Enter key
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') update();
+    });
+  </script>
+
+  </body>
+  
+</html>
