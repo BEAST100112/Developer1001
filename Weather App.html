@@ -210,8 +210,8 @@
     const result = document.getElementById('result');
 
     const samples = {
-      pune: { emoji: '🌤', text: 'Sunny, 30°C' },
-      mumbai: { emoji: '🌧', text: 'Rainy, 28°C' }
+      pune: { emoji: '🌤', text: 'Sunny, 34°C' },
+      mumbai: { emoji: '🌧', text: 'Rainy, 22°C' }
     };
 
     function formatCity(name) {
@@ -230,7 +230,7 @@
         return `Weather in <span class="city">${city}</span>: ${emoji} ${text}`;
       }
       const city = formatCity(cityRaw || 'your city');
-      return `Weather in <span class="city">${city}</span>: ⛅️ Partly cloudy, 27°C`;
+      return `Weather in <span class="city">${city}</span>: ⛅️ Partly cloudy, 20°C`;
     }
 
     function update() {
