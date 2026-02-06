@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Clock</title>
+    <style>
+      body{font-family:Papyrus;
+           text-align:center;
+           padding:50px;
+           background-color:#e0f7fa;
+          }
+      #clock{
+        font-size:67px;
+        color:#00695c;
+        padding:20px;
+        border-radius:10px;
+        backgroung-color:10px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <h1>My Digital Clock</h1>
+    <div id="clock">
+      00:00:00
+    </div>
+    <script>
+      function updateClock(){
+        var now=new Date();
+        var time=now.toLocalTimeString();
+        document.getElementById("clock").innerHTML=time;
+      }
+      setInterval(updateClock,1000);
+      updateClock();
+    </script>
+  </body>
+</html>
